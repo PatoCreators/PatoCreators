@@ -3,8 +3,21 @@
     text-align: center;
 }
 
-/* Descripcion general */
+/* Descripcion general con borde*/
 #general-descripcion{
     text-align: center;
     font-size: large;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    display: block;
+    margin: 0 auto;
+    width: 400px; /* largo predefinido */
+}
+
+/* Logo principal en medio de la pantalla */
+.logo-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
