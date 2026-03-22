@@ -1,23 +1,136 @@
-/* Titulo principal */
-#bienvenida{
-    text-align: center;
+:root {
+    --bg: #ffffff;
+    --text: #111111;
+    --overlay: rgba(0, 0, 0, 0.05); /* suave para claro */
+    --shadow-main: #000000;
+    --shadow-secondary: #505050;
+    --shadow-secondary-pulse: #c4c4c4;
+    --backwd: #ffffff;
 }
 
-/* Descripcion general con borde*/
-#general-descripcion{
-    text-align: center;
-    font-size: large;
-    border: 2px solid #333;
-    border-radius: 8px;
-    padding: 12px;
-    display: block;
-    margin: 0 auto;
-    width: 400px; /* largo predefinido */
+/* Modo Oscuro */
+.dark {
+    --bg: #121212;
+    --text: #e5e5e5;
+    --overlay: rgba(0, 0, 0, 0.3); /* más fuerte para oscuro */
+    --shadow-main: #000000;
+    --shadow-secondary: #5a5a5a;
+    --shadow-secondary-pulse: #ffffff;
+    --backwd: #000000;
 }
+
+/* Fondo Negro para permitir lectura */
+html {
+    background-color: none;
+}
+
+body {
+    margin-top: 0;
+    min-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: var(--bg);
+}
+
+/* Fondito personalizado */
+body::before {
+    display: flex;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Fondo de Minecraft */
+    background-image: url('/static/img/background/background-image.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* Botoncito pa la luz */
+#theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--text);
+}
+
 
 /* Logo principal en medio de la pantalla */
 .logo-principal {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+/* Titulo */
+#bienvenida {
+    text-align: center;
+    font-family: sans-serif; 
+    font-size: 2.5rem;
+    color: var(--text);
+    /* Ánimacion bien bonita de pulso :3 */
+    animation: Pulse 8s infinite ease-in-out;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+
+}
+
+/* Animación de pulso */
+@keyframes Pulse {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 
+            2px 2px 0 var(--shadow-main),
+            4px 4px 0 var(--shadow-secondary),
+            6px 6px 0 var(--shadow-main);
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 
+            2px 2px 0 var(--shadow-main),
+            4px 4px 0 var(--shadow-secondary-pulse),
+            6px 6px 0 var(--shadow-main);
+    }
+}
+
+/* Área principal */
+.text-area-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--overlay) 30%,
+        var(--bg) 100%
+    );
+}
+
+
+/* Descripcion general */
+#general-descripcion {
+    align-self: flex-start;
+    text-align: left;
+    font-size: large;
+    border: 2px solid var(--text);
+    border-radius: 8px;
+    padding: 12px;
+    backdrop-filter: blur(10px);
+    max-width: 400px;
+    margin-top: 20px;
+    color: var(--text);
+    /* Margen izquierdo para que no pegue al borde */
+    margin-left: 5%; 
 }
